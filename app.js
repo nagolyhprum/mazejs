@@ -3,8 +3,11 @@ var app = express();
 var http = require('http').Server(app);
 var index = require('./routes/index');
 var path = require('path');
-var Db = require("./private/db");
-var io = require("./private/socket.io")(http, Db);
+//important variables for each screen
+var Db = require("./private/db")();
+var io = require('socket.io')(http);
+//screens
+require("./private/screens/authentication")(io, Db);
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));

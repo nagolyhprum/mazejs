@@ -1,5 +1,32 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
+	canvas(width=640,height=480,id="screen")
+	div(class="dialog",id="signin")
+		div Sign In
+		div
+			div
+				a Sign Up
+			div
+				input(type="text",placeholder="Username",name="username")
+			div
+				input(type="password",placeholder="Password",name="password")
+			div
+				input(type="button",value="Sign In")
+	div(class="dialog",id="signup")
+		div Sign Up
+		div
+			div
+				a Sign In
+			div
+				input(type="text",placeholder="Username",name="username")
+			div
+				input(type="password",placeholder="Password",name="password")
+			div
+				input(type="button",value="Sign Up")
+
+block scripts
+	script(src="/javascripts/screen.js")
+	script(src="/javascripts/screens/loading.js")
+	script(src="/javascripts/screens/authentication.js")
+	script(src="/javascripts/setup.js")

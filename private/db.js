@@ -7,10 +7,10 @@ module.exports = function(ObjectID) {
 		this.data = data;
 	}
 	
-	Db.config = {};
+	Db.schema = {};
 	
 	Db.prototype.validate = function() {
-		var validator = Db.config[this.name];
+		var validator = Db.schema[this.name];
 		if(validator) {
 			var data = {};
 			for(var i in validator) {
@@ -41,7 +41,6 @@ module.exports = function(ObjectID) {
 			}
 			this.data = data;
 		}
-		console.log(this.data);
 		return this;
 	};
 
@@ -51,11 +50,11 @@ module.exports = function(ObjectID) {
 		});
 	};
 
-	Db.prototype.save = function() {
+	Db.prototype.save = function(success) {
 		var self = this;
 		Db.connect(function(connection) {
-			connection.collection(self.name).save(self.data, function() {
-				//TODO
+			connection.collection(self.name).save(self.data, function(err, result) {
+				success && success(result);
 			});
 		});
 		return self;
@@ -64,8 +63,8 @@ module.exports = function(ObjectID) {
 	Db.prototype.find = function(success) {
 		var self = this;
 		Db.connect(function(connection) {
-			connection.collection(self.name).find(self.data).toArray(function(error, data) {
-				success && success(data);
+			connection.collection(self.name).find(self.data).toArray(function(error, result) {
+				success && success(result);
 			});
 		});
 		return self;

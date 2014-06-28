@@ -2,34 +2,9 @@ doctype html
 html
 	head
 		title=title
-		
 		script(src="https://cdn.socket.io/socket.io-1.0.6.js")
-		
 		script(src="http://code.jquery.com/jquery-2.1.1.min.js")
-				
-		link(rel="stylesheet", href="/stylesheets/style.css")
-		script(src="/javascripts/script.js")
+		link(rel="stylesheet",href="/stylesheets/style.css")
+		block scripts
 	body
-		canvas(width=640, height=480, id="screen")
-		div(class="dialog",id="signin")
-			div Sign In
-			div
-				div
-					a Sign Up
-				div
-					input(type="text",placeholder="Username",name="username")
-				div
-					input(type="password",placeholder="Password",name="password")
-				div					
-					input(type="button", value="Sign In")
-		div(class="dialog",id="signup")
-			div Sign Up
-			div
-				div
-					a Sign In
-				div
-					input(type="text",placeholder="Username",name="username")
-				div
-					input(type="password",placeholder="Password",name="password")
-				div					
-					input(type="button", value="Sign Up")
+		block content
