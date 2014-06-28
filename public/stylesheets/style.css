@@ -1,0 +1,59 @@
+canvas {
+	background : black;
+}
+
+.dialog {
+	position : fixed;
+	left : 50%;
+	margin-left : -150px;
+	margin-top : -100px;
+	top : 50%;
+	
+	width : 300px;
+	height : 200px;
+	border : 1px solid white;
+	border-radius : 5px;
+	background : black;
+	padding : 5px;
+}
+
+.dialog input {
+	margin : 5px 0;
+	border-radius : 5px;
+	width : 286px;
+	padding : 5px;
+}
+
+.dialog input[type="button"] {
+	background : white;
+	width : 300px;
+	cursor : pointer;
+}
+
+.dialog a {
+	color : white;
+	cursor : pointer;
+	display : block;
+	float : right;
+	clear : both;
+}
+
+.dialog a:hover {
+	color : #eee;
+}
+
+.dialog input[type="button"]:hover {
+	background : #eee;
+}
+
+.dialog > div:nth-child(1) {
+	padding : 5px;
+	background : white;
+	border-radius : 5px;
+	margin-bottom : 30px;
+	font-weight : bold;
+}
+
+.dialog > div:nth-child() {
+	overflow : auto;
+}
