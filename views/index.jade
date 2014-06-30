@@ -1,5 +1,4 @@
 extends layout
-
 block content
 	canvas(width=640,height=480,id="screen")
 	div(class="dialog",id="signin")
@@ -24,9 +23,29 @@ block content
 				input(type="password",placeholder="Password",name="password")
 			div
 				input(type="button",value="Sign Up")
-
+	div(class="dialog",id="character")
+		div Character
+		div
+			canvas(id="previewcharacter",width=64,height=64)
+			div Body
+				input(type="text",scrollable="bodies",name="bodystyle")
+				input(type="colorpicker",name="bodycolor")
+			div Hair
+				input(type="text",scrollable="hairs",name="hairstyle")
+				input(type="colorpicker",name="haircolor")
+			div Shirt
+				input(type="text",scrollable="shirts",name="shirtstyle")
+				input(type="colorpicker",name="shirtcolor")
+			div Pants
+				input(type="text",scrollable="pants",name="pantsstyle")
+				input(type="colorpicker",name="pantscolor")
+			div Shoes
+				input(type="text",scrollable="shoes",name="shoestyle")
+				input(type="colorpicker",name="shoecolor")
 block scripts
 	script(src="/javascripts/screen.js")
 	script(src="/javascripts/screens/loading.js")
 	script(src="/javascripts/screens/authentication.js")
+	script(src="/javascripts/screens/viewcharacters.js")
+	script(src="/javascripts/screens/createcharacter.js")
 	script(src="/javascripts/setup.js")

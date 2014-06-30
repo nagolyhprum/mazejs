@@ -1,4 +1,4 @@
-module.exports = function(io, Db) {
+module.exports = function(io, Db, sessions) {
 	io.on('connection', function(socket) {
 		socket.on("signin", function(user) {
 			if(user) {
@@ -9,12 +9,15 @@ module.exports = function(io, Db) {
 					var error = [];
 					if(result.length != 1) {
 						error.push("Incorrect username or password.");
+					} else {
+						sessions[socket.id] = result[0];
 					}
-					socket.emit("authenticated", error);
+					socket.emit("authenticated", error, result[0]);
 				});
 			}
 		});
 		socket.on("signup", function(user) {
+			//FULL NAME?
 			if(user) {
 				var db = new Db("user", {
 					username : user.username,
@@ -34,12 +37,16 @@ module.exports = function(io, Db) {
 					if(result.length) {
 						errors.push("Duplicate username.");
 					}
-					if(!errors.length) {
-						db.save(function(result) {
-							
+					if(!errors.length) {						
+						db.data.characters = [];
+						db.data.behaviors = [];
+						db.save(function(error, result) {
+							if(!error) {
+								sessions[socket.id] = result;
+							}
+							socket.emit("authenticated", errors, result);
 						});
 					}
-					socket.emit("authenticated", errors);
 				});
 			}
 		});

@@ -20,5 +20,13 @@ var Screen = (function() {
 	Screen.screens = {};
 	Screen.context = null;
 	
+	Screen.click = function(l) {
+		Screen.active && Screen.active.click && Screen.active.click(l);
+	};
+	
+	Screen.mousemove = function(l) {
+		Screen.active && Screen.active.mousemove && Screen.active.mousemove(l);
+	};
+	
 	return Screen;
 }());

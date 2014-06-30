@@ -53,8 +53,8 @@ module.exports = function(ObjectID) {
 	Db.prototype.save = function(success) {
 		var self = this;
 		Db.connect(function(connection) {
-			connection.collection(self.name).save(self.data, function(err, result) {
-				success && success(result);
+			connection.collection(self.name).save(self.data, function(error, result) {
+				success && success(error, result);
 			});
 		});
 		return self;
