@@ -10,8 +10,21 @@ module.exports = function(Db) {
 		subcategory : String,
 		current : Number
 	};
+	Db.schema.color = {
+		r : Number,
+		g : Number,
+		b : Number
+	};
+	Db.schema.customization = {
+		head : "color",
+		body : "color",
+		legs : "color",
+		feet : "color",
+		torso : "color"
+	};
 	Db.schema.character = {
-		charactername : String,
+		colors : "customization",
+		name : String,
 		current : "statistic",
 		max : "statistic",
 		equipment : Array("item"),

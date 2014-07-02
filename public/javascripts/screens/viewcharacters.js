@@ -15,7 +15,7 @@ Screen("view characters", {
 			context.fillRect(10, y, this.characters.width, this.characters.height);
 			y += 20 + this.characters.height;
 		}
-		if(true || user.characters.length < 3) {
+		if(user.characters.length < 3) {
 			context.textAlign = "left";
 			context.textBaseline = "middle";
 			context.fillStyle = "rgba(126, 126, 126, 0.5)";

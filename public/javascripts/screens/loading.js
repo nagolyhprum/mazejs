@@ -1,4 +1,9 @@
 Screen("loading", {
+	load : function() {	
+		socket.on("connect", function() {
+			Screen("authentication");
+		});	
+	},
 	start : function(ms) {
 		this.elapsed = 0;
 		this.lastUpdate = ms;

@@ -1,3 +1,29 @@
+#character .customization {
+	width : 50%;
+	float : left;
+}
+
+#character .canvas {
+	width : 50%;
+	float : left;
+}
+
+#character > div:nth-child(2) > div > div {
+	clear : both;
+}
+
+.cp {	
+	float : left;
+}
+
+.cp div {
+	border-radius : 5px;
+	background : url(../images/select.png) -3px -3px no-repeat;
+	width : 30px;
+	height : 30px;
+	cursor : pointer;
+}
+
 canvas#screen {
 	background : url("../images/background.jpg");
 	position : fixed;
@@ -23,9 +49,9 @@ canvas#screen {
 
 #character {	
 	width : 300px;
-	height : 600px;
+	height : 340px;
 	margin-left : -150px;
-	margin-top : -300px;
+	margin-top : -150px;
 }
 
 .dialog {
@@ -34,7 +60,7 @@ canvas#screen {
 	top : 50%;
 	border : 1px solid white;
 	border-radius : 5px;
-	background : rgba(0, 0, 0, 0.5);
+	background : rgba(0, 0, 0, 1);
 	padding : 5px;
 }
 

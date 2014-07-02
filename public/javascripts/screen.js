@@ -12,6 +12,9 @@ var Screen = (function() {
 			Screen.active = Screen.screens[name];
 			Screen.active && Screen.active.start && Screen.active.start(time);	
 		} else {
+			screen.load && $(function() {
+				screen.load();
+			});
 			Screen.screens[name] = screen;
 		}
 	}

@@ -9,6 +9,7 @@ var Db = require("./private/db")();
 var io = require('socket.io')(http);
 //screens
 require("./private/screens/authentication")(io, Db, sessions);
+require("./private/screens/createcharacter")(io, Db, sessions);
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
