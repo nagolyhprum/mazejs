@@ -1,8 +1,8 @@
 Screen("authentication", {	
-	load : function() {			
-		socket.on("authenticated", function(errors, u) {
+	load : function() {					
+		global.socket.on("authenticated", function(errors, u) {
 			if(!errors.length) {
-				user = u;
+				global.user = u;
 				Screen("view characters");
 			} else { 
 				console.log(errors);
@@ -13,7 +13,7 @@ Screen("authentication", {
 			$("#signin").show();
 		});		
 		$("#signup [type='button']").click(function() {			
-			socket.emit("signup", {
+			global.socket.emit("signup", {
 				username : $("#signup [name='username']").val(),
 				password : $("#signup [name='password']").val()
 			});
@@ -23,13 +23,14 @@ Screen("authentication", {
 			$("#signin").hide();
 		});
 		$("#signin [type='button']").click(function() {		
-			socket.emit("signin", {
+			global.socket.emit("signin", {
 				username : $("#signin [name='username']").val(),
 				password : $("#signin [name='password']").val()
 			});	
 		});		
 	},
 	start : function(ms) {
+		//CLEAR FORM
 		$("#signup").hide();
 		$("#signin").show();
 	},

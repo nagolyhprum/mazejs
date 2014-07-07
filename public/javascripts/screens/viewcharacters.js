@@ -1,24 +1,36 @@
 Screen("view characters", {
-	start : function(ms) {
+	load : function() {
 		this.characters = {
 			width : 620,
-			height : 60
+			height : 64
 		};
+	},
+	start : function(ms) {
+		this.hover = -1;
 	},
 	update : function(ms) {
 		
 	},
 	draw : function(context) {
-		var y = 10;
-		for(var i = 0; i < user.characters.length; i++) {
-			context.fillStyle = "rgba(126, 126, 126, 0.5)";
+		//PROVIDE A WAY TO LOGOUT
+		var y = 10, i = 0;
+		for(; i < global.user.characters.length; i++) {
+			if(i == this.hover) {
+				context.fillStyle = "rgba(126, 126, 126, 0.5)";
+			} else {
+				context.fillStyle = "rgba(152, 152, 152, 0.5)";
+			}
 			context.fillRect(10, y, this.characters.width, this.characters.height);
 			y += 20 + this.characters.height;
 		}
-		if(user.characters.length < 3) {
+		if(global.user.characters.length < 3) {
 			context.textAlign = "left";
 			context.textBaseline = "middle";
-			context.fillStyle = "rgba(126, 126, 126, 0.5)";
+			if(i == this.hover) {
+				context.fillStyle = "rgba(126, 126, 126, 0.5)";
+			} else {
+				context.fillStyle = "rgba(152, 152, 152, 0.5)";
+			}
 			context.fillRect(10, y, this.characters.width, this.characters.height);
 			context.fillStyle = "white";
 			context.fillText("Click to create a new character", 20, y + this.characters.height / 2);
@@ -27,21 +39,54 @@ Screen("view characters", {
 	end : function(ms) {
 		
 	},
-	click : function(l) {
-		var y = 
-			(this.characters.height * user.characters.length) + 
-			(20 * user.characters.length) + 
-			10;
-		if(
-			l.x > 10 && 
-			l.x < 10 + this.characters.width && 
-			l.y > y &&
-			l.y < y + this.characters.height
-		) {
-			Screen("create character");
+	click : function() {
+		//DELETE A CHARACTER
+		//PROVIDE A WAY TO LOGOUT
+		var bbs = [], y = 10;
+		for(var i = 0; i < global.user.characters.length; i++) {			
+			bbs.push({
+				x : 10, 
+				y : y, 
+				width : this.characters.width, 
+				height : this.characters.height, 
+				click : function() {
+					//if not sleeping
+						//Screen("view maze");
+					//else
+						//message box
+				}
+			});
+			y += this.characters.height + 20;
 		}
+		if(global.user.characters.length < 3) {
+			bbs.push({
+				x : 10, 
+				y : y, 
+				width : this.characters.width, 
+				height : this.characters.height, 
+				click : function() {
+					Screen("create character");
+				}
+			});
+		}
+		return bbs;
 	},
-	mousemove : function(l) {
-		
+	mousemove : function(l) {		
+		var bbs = [], y = 10, self = this;
+		this.hover = -1;
+		for(var i = 0; i < global.user.characters.length + 1; i++) {	
+			bbs.push({
+				x : 10, 
+				y : y, 
+				width : this.characters.width, 
+				height : this.characters.height, 
+				index : i,
+				mousemove : function() {
+					self.hover = this.index;
+				}
+			});
+			y += this.characters.height + 20;
+		}
+		return bbs;
 	}
 });

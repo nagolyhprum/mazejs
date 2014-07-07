@@ -8,11 +8,14 @@ var Utility = (function() {
 		var context = canvas.getContext("2d");
 		context.drawImage(image, 0, 0);
 		var id = context.getImageData(0, 0, canvas.width, canvas.height);
+		var r = rgb.r / 255,
+			g = rgb.g / 255,
+			b = rgb.b / 255;
 		for(var i = 0; i < id.data.length; i += 4) {
 			if(id.data[i]) { 
-				id.data[i] = Math.floor(id.data[i] * rgb.r / 255);
-				id.data[i + 1] = Math.floor(id.data[i + 1] * rgb.g / 255);
-				id.data[i + 2] = Math.floor(id.data[i + 2] * rgb.b / 255);
+				id.data[i] = Math.floor(id.data[i] * r);
+				id.data[i + 1] = Math.floor(id.data[i + 1] * g);
+				id.data[i + 2] = Math.floor(id.data[i + 2] * b);
 			}
 		}
 		context.putImageData(id, 0, 0);

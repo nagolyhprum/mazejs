@@ -1,25 +1,33 @@
 module.exports = function(io, Db, sessions) {
 	io.on("connection", function(socket) {
-		console.log("added character creation listener");
 		socket.on("createcharacter", function(character) {
-			console.log("creating character");
 			var user = sessions[socket.id];
 			if(character && user) {
-				console.log("found character and user");
 				if(user.characters.length < 3) {
-					console.log("there are less than 3 characters");
+					var statistics = {						
+						strength : 1,
+						defense : 1,
+						intelligence : 1,
+						resistance : 1,
+						endurance : 0,
+						speed : 1,
+						health : 100,
+						energy : 100,
+						stamina : 100
+					};
 					character = new Db("character", {
 						name : character.name,
 						colors : character.colors,
 						maze : null,
 						equipment : [],
 						inventory : [],
-						current : null,
-						max : null,
+						current : statistics,
+						max : statistics,
 						x : null,
 						y : null,
 						row : null,
-						column : null
+						column : null,
+						wakeup : 0
 					}).validate().data
 					var db = new Db("user", user).validate();
 					for(var i in Db.schema.colors) {

@@ -1,6 +1,6 @@
 Screen("loading", {
 	load : function() {	
-		socket.on("connect", function() {
+		global.socket.on("connect", function() {
 			Screen("authentication");
 		});	
 	},

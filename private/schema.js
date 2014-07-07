@@ -33,7 +33,8 @@ module.exports = function(Db) {
 		x : Number,
 		y : Number,
 		column : Number,
-		row : Number		
+		row : Number,
+		wakeup : Number
 	};
 	Db.schema.enemy = { //can be a model
 		name : String,
@@ -51,7 +52,8 @@ module.exports = function(Db) {
 		weight : Number,
 		range : Number,
 		x : Number,
-		y : Number
+		y : Number,
+		weight : Number
 	};
 	Db.schema.maze = {  //can be a model
 		rooms : Array("room"),
@@ -65,8 +67,19 @@ module.exports = function(Db) {
 		items : Array("item"),
 		count : Number
 	};
+	Db.schema.statistic = {
+		strength : Number,
+		defense : Number,
+		intelligence : Number,
+		resistance : Number,
+		endurance : Number,
+		speed : Number,
+		health : Number,
+		energy : Number,
+		stamina : Number
+	};
 	Db.schema.user = {
-		fullname : String,
+		//fullname : String,
 		username : String,
 		password : String,
 		characters : Array("character"),
