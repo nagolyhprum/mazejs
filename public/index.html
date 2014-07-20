@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		
+		<link rel="stylesheet" href="/stylesheets/style.css"/>
+		<link rel="stylesheet" href="/stylesheets/colorpicker.css"/>
+	</head>
+	<body>
+		<canvas width=640 height=480 id="screen"><HTML 5 canvas not supported</canvas>
+		<div(class="dialog",id="signin")
+			<div<Sign In</div>
+			<div<
+				<div>
+					<a>Sign Up</a>
+				</div>
+				<div>
+					<input type="text" placeholder="Username" name="username"/>
+				</div>
+				<div>
+					<input type="password" placeholder="Password" name="password"/>
+				</div>
+				<div>
+					<input type="button" value="Sign In"/>
+				</div>
+			</div>
+		</div>
+		<div class="dialog" id="signup">
+			<div>div Sign Up</div>
+			<div>
+				<div><aa> Sign In</aa></div>
+				<div><input type="text" placeholder="Username" name="username"/></div>
+				<div><input type="password" placeholder="Password" name="password"/></div>
+				<div><input type="button" value="Sign Up"/></div>
+			</div>
+		</div>
+		<div class="dialog" id="character">
+			<div>Character</div>
+			<div>
+				<div class='canvas'>
+					<canvas id="previewcharacter" width=150 height=150></canvas>
+				</div>
+				<div class='customization'>
+					<div> Body
+						<div class="cp" data-part="body">
+							<div style="background-color:#112233;"></div>
+						</div>
+					</div>
+					<div> Head
+						<div class="cp" data-part="head">)
+							<div style="background-color:#001122;"></div>
+						</div>
+					</div>
+					<div> Torso
+						<div class="cp" data-part="torso">
+							<div style="background-color:#223344;"></div>
+						</div>
+					</div>
+					<div> Legs
+						<div class="cp" data-part="legs">
+							<div style="background-color:#334455;"></div>
+						</div>
+					</div>
+					<div> Feet
+						<div class="cp" data-part="feet">
+							<div style="background-color:#445566;"></div>
+						</div>
+					</div>
+				</div>
+				<div><input type="text" name="charactername" placeholder="Name"/></div>
+				<div><input type="button" value="Create" id="createcharacter"/></div>
+				<div><input type="button" value="Cancel" id="cancelcharacter"/></div>
+			</div>
+		</div>
+		<script src="/javascripts/socket.io.js"></script>
+		<script src="/javascripts/jquery.js"></script>
+		<script src="/javascripts/colorpicker/colorpicker.js"></script>
+		<script src="/javascripts/colorpicker/eye.js"></script>
+		<script src="/javascripts/colorpicker/utils.js"></script>
+		
+		<script src="/javascripts/utility.js"></script>
+		<script src="/javascripts/screen.js"></script>
+		<script src="/javascripts/screens/loading.js"></script>
+		<script src="/javascripts/screens/authentication.js"></script>
+		<script src="/javascripts/screens/viewcharacters.js"></script>
+		<script src="/javascripts/screens/createcharacter.js"></script>
+		<script src="/javascripts/setup.js"></script>
+	</body>
+</html>

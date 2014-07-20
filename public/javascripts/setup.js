@@ -63,7 +63,11 @@ var global = (function() {
 		Screen.context = cvs.getContext("2d");		
 		setInterval(function() {
 			cvs.width = cvs.width;
-			Screen();
+			try {
+				Screen();
+			} catch(e) {
+				ctx.fillText('ERR', 10, 10);
+			}
 		}, 1000 / 60);
 	});
 }());
